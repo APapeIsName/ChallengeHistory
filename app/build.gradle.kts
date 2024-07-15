@@ -1,14 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.android.nbc_c_assignment1"
+    namespace = "com.android.nbc_login"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.android.nbc_c_assignment1"
+        applicationId = "com.android.nbc_login"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -36,12 +37,13 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

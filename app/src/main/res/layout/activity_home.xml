@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.nbc_c_assignment1.challenge3.nbc_login.HomeActivity">
+
+    <ImageView
+        android:id="@+id/iv_chicken"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:src="@drawable/kyochon_1"
+        android:background="@drawable/image_background"
+        android:layout_margin="32dp"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잘못된 값입니다."
+        android:textSize="24sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/iv_chicken"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_btn_chicken"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_home"
+        android:clickable="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            <ImageView
+                android:id="@+id/iv_btn_image"
+                android:src="@drawable/btn_home_emoji"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
+                />
+
+            <android.widget.TextView
+                android:id="@+id/tv_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="종료"
+                android:textSize="20dp"
+                android:textColor="@drawable/btn_home_text"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sw_btnChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="링크로 바꾸기 "
+        android:checked="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cl_btn_chicken"
+        app:layout_constraintTop_toBottomOf="@+id/tv_info"
+        android:layout_marginVertical="32dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

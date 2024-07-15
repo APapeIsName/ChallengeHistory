@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "NBC_C_Assignment1"
+rootProject.name = "NBC_Login"
 include(":app")
  
