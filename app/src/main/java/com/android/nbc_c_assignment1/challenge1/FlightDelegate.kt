@@ -1,4 +1,4 @@
-package com.android.nbc_c_assignment1
+package com.android.nbc_c_assignment1.challenge1
 
 interface FlightInterfaceD {
     val invisibleFlightInfo: InvisibleFlightInfo
@@ -38,13 +38,15 @@ class FlightD(
 
 }
 
-class DepartureFlightD(flight: FlightD, private val destination: String): FlightInterfaceD by flight, PrintFlightInterfaceD {
+class DepartureFlightD(flight: FlightD, private val destination: String): FlightInterfaceD by flight,
+    PrintFlightInterfaceD {
     override fun printItem() {
         println("${time.scheduledTime}\t${time.estimatedTime}\t$destination\t${flight.flightNum}\t${flight.codeShare}\t${checkInCounter}\t$gate\t$state")
     }
 }
 
-class ArrivalFlightD(flight: FlightD, private val from: String): FlightInterfaceD by flight, PrintFlightInterfaceD  {
+class ArrivalFlightD(flight: FlightD, private val from: String): FlightInterfaceD by flight,
+    PrintFlightInterfaceD {
     override fun printItem() {
         println("${time.scheduledTime}\t${time.estimatedTime}\t$from\t${flight.flightNum}\t${flight.codeShare}\t${checkInCounter}\t$gate\t$state")
     }

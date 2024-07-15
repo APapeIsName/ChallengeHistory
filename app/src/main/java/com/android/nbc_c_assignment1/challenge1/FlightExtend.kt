@@ -1,4 +1,4 @@
-package com.android.nbc_c_assignment1
+package com.android.nbc_c_assignment1.challenge1
 
 /*
 
