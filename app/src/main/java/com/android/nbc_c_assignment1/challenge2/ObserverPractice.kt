@@ -22,7 +22,9 @@ class NewsLetterPractice {
     }
 
     // 구독자 추가
-    fun register(listener: ObserverPractice) = subscribers.add(listener)
+    fun subscribe(subscriber: ObserverPractice) = subscribers.add(subscriber)
+
+    fun unsubscribe(n: Int) = subscribers.removeAt(n)
 
     // 뉴스 발행
     fun publish() {

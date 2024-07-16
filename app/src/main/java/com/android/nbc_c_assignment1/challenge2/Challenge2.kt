@@ -1,19 +1,17 @@
 package com.android.nbc_c_assignment1.challenge2
 
 fun challenge2First() {
-    val a = SubscriberA()
-    val b = SubscriberB()
-    a.subscribe()
-    b.subscribe()
-    println("=-=-=-=-=-=-=-=-=-=-=-=-=")
     val news = NewsLetterPractice()
-    news.register(SubscriberPractice())
-    news.register(SubscriberPractice())
-    news.register(SubscriberPractice())
+    news.subscribe(SubscriberPractice())
+    news.subscribe(SubscriberPractice())
+    news.subscribe(SubscriberPractice())
     news.publish()
     news.changeNews("속보입니다!!!")
-    news.register(SubscriberPractice())
+    news.subscribe(SubscriberPractice())
     news.changeNews("거짓말입니다.")
+    news.unsubscribe(2)
+    news.unsubscribe(1)
+    news.changeNews("죄송합니다.")
 }
 
 fun challenge2Second() {
