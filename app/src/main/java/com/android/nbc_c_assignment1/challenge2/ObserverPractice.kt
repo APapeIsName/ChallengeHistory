@@ -10,10 +10,11 @@ class SubscriberPractice: ObserverPractice {
 
 class NewsLetterPractice {
     // 구독자 관리
-    private val subscribers: MutableList<ObserverPractice> = mutableListOf()
+    private val subscribers: MutableMap<Int, ObserverPractice> = mutableMapOf()
 
     // 뉴스 내용
     private var str = "구독해주셔서 감사합니다."
+    private var idIndex = 0
 
     // 뉴스 내용 변경
     fun changeNews(s: String) {
@@ -22,16 +23,18 @@ class NewsLetterPractice {
     }
 
     // 구독자 추가
-    fun subscribe(subscriber: ObserverPractice) = subscribers.add(subscriber)
+    fun subscribe(subscriber: ObserverPractice) = subscribers.put(idIndex++, subscriber)
 
-    fun unsubscribe(n: Int) = subscribers.removeAt(n)
+    fun unsubscribe(id: Int) = subscribers.remove(id-1)
+    // id 추가
 
     // 뉴스 발행
     fun publish() {
-        for(i in 0..<subscribers.size) {
-            println("${i+1} 번 구독자가 받은 내용 : ")
-            subscribers[i].onReceive(str)
+        for(sub in subscribers) {
+            print("${sub.key + 1}번 구독자 수신: ")
+            sub.value.onReceive(str)
         }
+        println("----=----=----=----\n")
     }
 }
 

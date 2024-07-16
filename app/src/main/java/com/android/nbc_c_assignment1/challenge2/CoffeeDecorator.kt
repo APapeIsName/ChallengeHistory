@@ -41,7 +41,9 @@ class WhipCreamDecorator(private val coffee: Coffee): CoffeeDecorator {
     override fun toString(): String = "휘핑 크림 얹은, $coffee"
 }
 
-class RedTea: Tea {
+class BlackTea: Tea {
     override val price: Int = 4000
     override fun toString(): String = "홍차"
 }
+
+// BlackTea

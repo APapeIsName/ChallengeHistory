@@ -24,7 +24,7 @@ fun challenge2Second() {
     val finalCoffee = WhipCreamDecorator(SyrupDecorator(syrupCoffee))
     finalCoffee.showInfo()
     SyrupDecorator(Americano()).showInfo()
-    val redTea = RedTea()
+    val redTea = BlackTea()
     redTea.showInfo()
     MilkDecorator(redTea).showInfo()
 }
