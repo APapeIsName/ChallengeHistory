@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.android.nbc_c_assignment1.challenge4_2.NewsDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/detail"
+        android:padding="32dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />

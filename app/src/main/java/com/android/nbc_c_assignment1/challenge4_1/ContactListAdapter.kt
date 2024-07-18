@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.android.nbc_c_assignment1.challenge3.nbc_login.ContractListDiffCallback
 import com.android.nbc_login.databinding.LayoutContactListFavoriteBinding
 import com.android.nbc_login.databinding.LayoutContactListNormalBinding
 
@@ -12,7 +11,9 @@ enum class ViewType {
     NORMAL, FAVORITE
 }
 
-class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdapter<ContactListData, RecyclerView.ViewHolder>(ContractListDiffCallback()) {
+class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdapter<ContactListData, RecyclerView.ViewHolder>(
+    ContractListDiffCallback()
+) {
 //    fun initList() {
 //        val list = viewModel.getList()
 //        if (list != null) {
