@@ -1,9 +1,12 @@
-package com.android.nbc_c_assignment1.challenge4_1
+package com.android.nbc_c_assignment1.challenge4_1.presentation.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.Nullable
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.android.nbc_c_assignment1.challenge4_1.data.entity.ContactListDataEntity
+import com.android.nbc_c_assignment1.challenge4_1.presentation.model.ContactListDataModel
 import com.android.nbc_login.databinding.LayoutContactListFavoriteBinding
 import com.android.nbc_login.databinding.LayoutContactListNormalBinding
 
@@ -11,17 +14,9 @@ enum class ViewType {
     NORMAL, FAVORITE
 }
 
-class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdapter<ContactListData, RecyclerView.ViewHolder>(
+class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdapter<ContactListDataModel, RecyclerView.ViewHolder>(
     ContractListDiffCallback()
 ) {
-//    fun initList() {
-//        val list = viewModel.getList()
-//        if (list != null) {
-//            val partition = list.partition { it.isFavorite }
-//            favoriteList = partition.first
-//            normalList = partition.second
-//        }
-//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewHolder: RecyclerView.ViewHolder
@@ -47,17 +42,17 @@ class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdap
     }
 
     override fun getItemViewType(position: Int): Int {
-        println("h $position ${viewModel.getList()?.get(position)?.isFavorite}")
         return if (viewModel.getList()?.get(position)?.isFavorite == true) ViewType.FAVORITE.ordinal else ViewType.NORMAL.ordinal
     }
 
-    override fun getItemCount(): Int = viewModel.getList()!!.size
+    override fun getItemCount(): Int = viewModel.getList()?.size ?: 0
 
     override fun getItemId(position: Int): Long = position.toLong()
 
-    interface ItemClick {
+    fun interface ItemClick {
         fun onClick()
     }
+    fun setOnItemLongClickListener(itemClick: ItemClick?) {}
 
     var itemLongClick: ItemClick? = null
 

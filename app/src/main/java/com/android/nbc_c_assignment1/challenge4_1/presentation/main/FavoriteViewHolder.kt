@@ -1,9 +1,9 @@
-package com.android.nbc_c_assignment1.challenge4_1
+package com.android.nbc_c_assignment1.challenge4_1.presentation.main
 
 import androidx.recyclerview.widget.RecyclerView
-import com.android.nbc_login.databinding.LayoutContactListNormalBinding
+import com.android.nbc_login.databinding.LayoutContactListFavoriteBinding
 
-class NormalViewHolder(private val binding: LayoutContactListNormalBinding) :
+class FavoriteViewHolder(private val binding: LayoutContactListFavoriteBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(
         viewModel: ContactListViewModel,
