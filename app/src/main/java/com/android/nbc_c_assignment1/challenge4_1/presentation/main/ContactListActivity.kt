@@ -61,17 +61,7 @@ class ContactListActivity : AppCompatActivity() {
         }
 
         // 함수를 사용하지 않은 SAM 변환
-        adapter.itemLongClick = ContactListAdapter.ItemClick {
-            if(ActivityCompat.checkSelfPermission(this@ContactListActivity, permissionList[1]) == PackageManager.PERMISSION_GRANTED) {
-                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:01084381217"))
-                startActivity(intent)
-            } else {
-                requestPermissionLauncher.launch(permissionList)
-            }
-        }
-
-        // 함수를 사용한 SAM 변환
-//        adapter.setOnItemLongClickListener {
+//        adapter.itemLongClick = ContactListAdapter.ItemClick {
 //            if(ActivityCompat.checkSelfPermission(this@ContactListActivity, permissionList[1]) == PackageManager.PERMISSION_GRANTED) {
 //                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:01084381217"))
 //                startActivity(intent)
@@ -79,6 +69,16 @@ class ContactListActivity : AppCompatActivity() {
 //                requestPermissionLauncher.launch(permissionList)
 //            }
 //        }
+
+        // 함수를 사용한 SAM 변환
+        adapter.setOnItemLongClickListener {
+            if(ActivityCompat.checkSelfPermission(this@ContactListActivity, permissionList[1]) == PackageManager.PERMISSION_GRANTED) {
+                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:01084381217"))
+                startActivity(intent)
+            } else {
+                requestPermissionLauncher.launch(permissionList)
+            }
+        }
 
         binding.recyclerContactList.adapter = adapter
         binding.recyclerContactList.layoutManager = LinearLayoutManager(this)

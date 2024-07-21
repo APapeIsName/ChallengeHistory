@@ -34,7 +34,7 @@ class NewsActivity : AppCompatActivity(), DetailDataListener {
                 supportFragmentManager.commit {
                     replace(R.id.fragment, titleFragment)
                     setReorderingAllowed(true)
-                    addToBackStack("title")
+//                    addToBackStack("title")
                 }
             } else {
                 supportFragmentManager.commit {
@@ -50,7 +50,7 @@ class NewsActivity : AppCompatActivity(), DetailDataListener {
                 replace(R.id.fragment_title, titleFragment)
 //                addToBackStack("title")
                 replace(R.id.fragment_detail, detailFragment)
-//                addToBackStack("detail")
+                addToBackStack("detail")
             }
         }
     }

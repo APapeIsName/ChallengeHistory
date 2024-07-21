@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.nbc_login.databinding.LayoutContactListNormalBinding
 
 class NormalViewHolder(private val binding: LayoutContactListNormalBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-    fun bind(
+    ContactViewHolder(binding) {
+    override fun bind(
         viewModel: ContactListViewModel,
         position: Int,
         itemLongClick: ContactListAdapter.ItemClick?

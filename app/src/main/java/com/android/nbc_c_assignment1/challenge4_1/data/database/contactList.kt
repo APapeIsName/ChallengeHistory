@@ -22,7 +22,6 @@ private fun loadContactData(contentResolver: ContentResolver): List<ContactListD
             list.add(ContactListDataEntity(R.drawable.profile_basic, cursor.getString(0), cursor.getString(1), false))
         }
     }
-    println("이거 $list")
     return list
 }
 

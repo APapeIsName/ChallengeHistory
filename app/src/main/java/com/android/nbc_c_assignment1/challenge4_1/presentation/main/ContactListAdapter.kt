@@ -52,8 +52,12 @@ class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdap
     fun interface ItemClick {
         fun onClick()
     }
-    fun setOnItemLongClickListener(itemClick: ItemClick?) {}
+    fun setOnItemLongClickListener(itemClick: ItemClick?) {
+        if(itemClick != null) {
+            itemLongClick = itemClick
+        }
+    }
 
-    var itemLongClick: ItemClick? = null
+    private var itemLongClick: ItemClick? = null
 
 }
