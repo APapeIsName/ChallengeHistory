@@ -28,7 +28,7 @@ class NewsActivity : AppCompatActivity(), DetailDataListener {
         setFragment(newConfig)
     }
 
-    fun setFragment(config: Configuration, isClick: Boolean = false) {
+    private fun setFragment(config: Configuration, isClick: Boolean = false) {
         if( config.orientation == Configuration.ORIENTATION_PORTRAIT ) {
             if(!isClick) {
                 supportFragmentManager.commit {
