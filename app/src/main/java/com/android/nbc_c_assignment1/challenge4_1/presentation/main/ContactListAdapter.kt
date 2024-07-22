@@ -14,7 +14,7 @@ enum class ViewType {
     NORMAL, FAVORITE
 }
 
-class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdapter<ContactListDataModel, RecyclerView.ViewHolder>(
+class ContactListAdapter : ListAdapter<ContactListDataModel, RecyclerView.ViewHolder>(
     ContractListDiffCallback()
 ) {
 
@@ -30,34 +30,46 @@ class ContactListAdapter(private val viewModel: ContactListViewModel) : ListAdap
                 viewHolder = FavoriteViewHolder(binding)
             }
         }
-        println("$viewHolder $viewType")
         return viewHolder
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is NormalViewHolder -> holder.bind(viewModel, position, itemLongClick)
-            is FavoriteViewHolder -> holder.bind(viewModel, position, itemLongClick)
+            is NormalViewHolder -> holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
+            is FavoriteViewHolder -> holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
         }
+        println("이게 무슨 상황 $position $currentList")
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (viewModel.getList()?.get(position)?.isFavorite == true) ViewType.FAVORITE.ordinal else ViewType.NORMAL.ordinal
+        return if (getItem(position).isFavorite) ViewType.FAVORITE.ordinal else ViewType.NORMAL.ordinal
     }
 
-    override fun getItemCount(): Int = viewModel.getList()?.size ?: 0
+    override fun getItemCount(): Int = currentList.size
 
     override fun getItemId(position: Int): Long = position.toLong()
 
-    fun interface ItemClick {
-        fun onClick()
+    fun interface ContactItemLongClick {
+        fun onLongClick()
     }
-    fun setOnItemLongClickListener(itemClick: ItemClick?) {
+
+    fun interface FavoriteItemClick {
+        fun onClick(position: Int)
+    }
+
+    fun setOnItemLongClickListener(itemClick: ContactItemLongClick?) {
         if(itemClick != null) {
             itemLongClick = itemClick
         }
     }
 
-    private var itemLongClick: ItemClick? = null
+    fun setOnFavoriteClickListener(itemClick: FavoriteItemClick?) {
+        if (itemClick != null)
+            favoriteItemClick = itemClick
+    }
+
+    private var itemLongClick: ContactItemLongClick? = null
+
+    private var favoriteItemClick: FavoriteItemClick? = null
 
 }

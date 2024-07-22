@@ -16,13 +16,14 @@ class ContactListViewModel(private val contactListRepository: ContactListReposit
     private val _contactListData = MutableLiveData<List<ContactListDataModel>>()
     val contactListData: LiveData<List<ContactListDataModel>> get() = _contactListData
 
-    fun setContactListData() {
+    fun initContactListData() {
         _contactListData.value = contactListRepository.getContactList().sortModel()
     }
 
     fun setFavorite(position: Int) {
         val isFavorite = contactListData.value?.get(position)?.isFavorite
         changeFavorite(position, isFavorite ?: false)
+        println(contactListData.value)
     }
 
     private fun changeFavorite(position: Int, isFavorite: Boolean) {
@@ -43,6 +44,7 @@ class ContactListViewModel(private val contactListRepository: ContactListReposit
                 )
             }
         }?.sortModel()
+        println("값이 정렬된 후: ${contactListData.value}")
     }
 
     private fun List<ContactListDataModel>.sortModel(): List<ContactListDataModel> {

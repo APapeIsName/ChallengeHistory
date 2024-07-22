@@ -48,15 +48,15 @@ class ContactListActivity : AppCompatActivity() {
         if (ActivityCompat.checkSelfPermission(this, permissionList[0]) != PackageManager.PERMISSION_GRANTED) {
             requestPermissionLauncher.launch(permissionList)
         } else {
-            viewModel.setContactListData()
+            viewModel.initContactListData()
         }
 
-        adapter = ContactListAdapter(viewModel)
+        adapter = ContactListAdapter()
 
         adapter.submitList(viewModel.getList())
 
         viewModel.contactListData.observe(this) {
-            println("옵저버 확인")
+            println("옵저버 확인 ${viewModel.getList()}")
             adapter.submitList(viewModel.getList())
         }
 
@@ -80,8 +80,16 @@ class ContactListActivity : AppCompatActivity() {
             }
         }
 
-        binding.recyclerContactList.adapter = adapter
-        binding.recyclerContactList.layoutManager = LinearLayoutManager(this)
+        adapter.setOnFavoriteClickListener {
+            println("페이보릿 클릭 $it")
+            viewModel.setFavorite(it)
+        }
+
+        binding.apply {
+            recyclerContactList.adapter = adapter
+            recyclerContactList.layoutManager = LinearLayoutManager(this@ContactListActivity)
+//            recyclerContactList.itemAnimator = null
+        }
     }
 
 }
