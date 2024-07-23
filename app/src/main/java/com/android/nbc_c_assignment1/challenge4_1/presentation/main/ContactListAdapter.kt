@@ -36,14 +36,19 @@ class ContactListAdapter : ListAdapter<ContactListDataModel, RecyclerView.ViewHo
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is NormalViewHolder -> {
-                println("비교: $position")
+                println("비교1: $position, ${getItemViewType(position)}, ${getItem(position)}")
                 holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
             }
             is FavoriteViewHolder -> {
+                println("비교2: $position, ${getItemViewType(position)}, ${getItem(position)}")
                 holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
             }
         }
         println("이게 무슨 상황 $position $currentList")
+    }
+
+    override fun submitList(list: MutableList<ContactListDataModel>?) {
+        super.submitList(list?.let { ArrayList(it) })
     }
 
     override fun getItemViewType(position: Int): Int {

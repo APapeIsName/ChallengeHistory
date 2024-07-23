@@ -53,11 +53,13 @@ class ContactListActivity : AppCompatActivity() {
 
         adapter = ContactListAdapter()
 
-        adapter.submitList(viewModel.getList())
+        adapter.submitList(viewModel.getList()?.toMutableList())
 
         viewModel.contactListData.observe(this) {
             println("옵저버 확인 ${viewModel.getList()}")
-            adapter.submitList(viewModel.getList())
+            adapter.submitList(null)
+            adapter.submitList(viewModel.getList()?.toMutableList())
+//            adapter.notifyDataSetChanged()
         }
 
         // 함수를 사용하지 않은 SAM 변환
@@ -83,13 +85,12 @@ class ContactListActivity : AppCompatActivity() {
         adapter.setOnFavoriteClickListener {
             println("페이보릿 클릭 $it")
             viewModel.setFavorite(it)
-            binding.recyclerContactList.scrollToPosition(0)
         }
 
         binding.apply {
             recyclerContactList.adapter = adapter
             recyclerContactList.layoutManager = LinearLayoutManager(this@ContactListActivity)
-//            recyclerContactList.itemAnimator = null
+            recyclerContactList.itemAnimator = null
         }
     }
 

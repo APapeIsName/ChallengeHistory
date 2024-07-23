@@ -29,7 +29,13 @@ private fun loadContactData(contentResolver: ContentResolver): List<ContactListD
 fun contactList(context: Context, contentResolver: ContentResolver): List<ContactListDataEntity> {
     return if(ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
         println("성공")
-        loadContactData(contentResolver)
+//        loadContactData(contentResolver)
+        listOf(
+            ContactListDataEntity(R.drawable.profile_basic, "홍길동", "010-0000-0000", false),
+            ContactListDataEntity(R.drawable.profile_basic, "김길동", "010-1234-0000", false),
+            ContactListDataEntity(R.drawable.profile_basic, "박길동", "010-0567-0000", true),
+            ContactListDataEntity(R.drawable.profile_basic, "박석두", "010-8790-0000", false),
+        )
     } else {
         println("실패")
         listOf(

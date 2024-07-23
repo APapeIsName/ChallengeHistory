@@ -22,6 +22,7 @@ class ContactListViewModel(private val contactListRepository: ContactListReposit
 
     fun setFavorite(position: Int) {
         val isFavorite = contactListData.value?.get(position)?.isFavorite
+//        val pos = contactListData.value?.count { it.isFavorite }
         changeFavorite(position, isFavorite ?: false)
 //        println("셋 페이보릿 $position, ${contactListData.value}, ")
     }
