@@ -83,6 +83,7 @@ class ContactListActivity : AppCompatActivity() {
         adapter.setOnFavoriteClickListener {
             println("페이보릿 클릭 $it")
             viewModel.setFavorite(it)
+            binding.recyclerContactList.scrollToPosition(0)
         }
 
         binding.apply {

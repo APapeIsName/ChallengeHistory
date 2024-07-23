@@ -35,8 +35,13 @@ class ContactListAdapter : ListAdapter<ContactListDataModel, RecyclerView.ViewHo
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is NormalViewHolder -> holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
-            is FavoriteViewHolder -> holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
+            is NormalViewHolder -> {
+                println("비교: $position")
+                holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
+            }
+            is FavoriteViewHolder -> {
+                holder.bind(currentList, position, itemLongClick, favoriteItemClick, )
+            }
         }
         println("이게 무슨 상황 $position $currentList")
     }

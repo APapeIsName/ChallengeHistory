@@ -23,7 +23,7 @@ class ContactListViewModel(private val contactListRepository: ContactListReposit
     fun setFavorite(position: Int) {
         val isFavorite = contactListData.value?.get(position)?.isFavorite
         changeFavorite(position, isFavorite ?: false)
-        println(contactListData.value)
+//        println("셋 페이보릿 $position, ${contactListData.value}, ")
     }
 
     private fun changeFavorite(position: Int, isFavorite: Boolean) {
@@ -44,7 +44,7 @@ class ContactListViewModel(private val contactListRepository: ContactListReposit
                 )
             }
         }?.sortModel()
-        println("값이 정렬된 후: ${contactListData.value}")
+//        println("값이 정렬된 후: ${contactListData.value}")
     }
 
     private fun List<ContactListDataModel>.sortModel(): List<ContactListDataModel> {

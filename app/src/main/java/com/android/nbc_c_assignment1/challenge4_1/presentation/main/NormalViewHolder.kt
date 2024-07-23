@@ -12,7 +12,7 @@ class NormalViewHolder(private val binding: LayoutContactListNormalBinding) :
         favoriteItemClick: ContactListAdapter.FavoriteItemClick?,
     ) {
         binding.apply {
-            println("노말 $position")
+//            println("노말 $position")
             tvName.text = list[position].name
             tvPhoneNum.text = list[position].phoneNumber
             ivFavorite.setOnClickListener {
